@@ -48,7 +48,7 @@ This catches errors before execution.
 Look at `agent/planner.py`, see `create_atomic_action()` function:
 
 ```python
-def create_atomic_action(llm: LocalLLM, step: str) -> dict | None:
+def create_atomic_action(llm: LLM, step: str) -> dict | None:
     """
     Convert a plan step into an atomic action.
     
@@ -125,7 +125,7 @@ Look at `complete_example.py`, see `lesson_09_atomic_actions()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 # Convert a plan step into an atomic action
 step = "Write an explanation of AI agents"

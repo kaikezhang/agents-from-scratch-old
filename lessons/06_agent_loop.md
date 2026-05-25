@@ -137,7 +137,7 @@ Look at `complete_example.py`, see `lesson_06_agent_loop()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 print("\nNote: Repetition in early iterations is expected.")
 print("The agent refines its understanding step by step and may repeat analysis")

@@ -98,7 +98,7 @@ Look at `complete_example.py`, see `lesson_03_structured()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 schema = '''
 {

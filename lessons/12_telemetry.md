@@ -145,7 +145,7 @@ Look at `complete_example.py`, see `lesson_12_telemetry()` method:
 from agent.agent import Agent
 from agent.telemetry import Telemetry
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 telemetry = Telemetry()
 
 # Start a trace

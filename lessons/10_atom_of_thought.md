@@ -39,7 +39,7 @@ Validation catches structural errors before execution begins.
 Look at `agent/planner.py`, see `create_aot_graph()` function:
 
 ```python
-def create_aot_graph(llm: LocalLLM, goal: str) -> dict | None:
+def create_aot_graph(llm: LLM, goal: str) -> dict | None:
     """
     Generate an AoT execution graph.
     
@@ -151,7 +151,7 @@ Look at `complete_example.py`, see `lesson_10_aot()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 graph = agent.create_aot_plan("Research and write article")
 print(f"AoT graph: {graph}")

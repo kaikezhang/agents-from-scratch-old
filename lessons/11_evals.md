@@ -194,7 +194,7 @@ from evals.golden_datasets import (
     MEMORY_GOLDEN
 )
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 evaluator = AgentEval(agent)
 
 # Run all evals

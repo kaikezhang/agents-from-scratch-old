@@ -19,7 +19,7 @@ Lesson progression:
 
 from typing import Any
 
-from shared.llm import LocalLLM
+from shared.llm import LLM
 from shared.utils import extract_json_from_text
 from agent.state import AgentState
 from agent.memory import Memory
@@ -35,15 +35,17 @@ class Agent:
     new methods and capabilities as lessons progress.
     """
     
-    def __init__(self, model_path: str):
+    def __init__(self, model: str | None = None):
         """
         Initialize the agent.
-        
+
         Args:
-            model_path: Path to the GGUF model file
+            model: Optional model name (e.g., "deepseek-chat"). Defaults to the
+                LLM_MODEL env var, or "deepseek-chat" if unset. The API key is
+                read from DEEPSEEK_API_KEY (or OPENAI_API_KEY).
         """
         # Lesson 01: Basic LLM interaction
-        self.llm = LocalLLM(model_path)
+        self.llm = LLM(model=model)
         
         # Lesson 02: System prompt for consistent behavior
         self.system_prompt = (

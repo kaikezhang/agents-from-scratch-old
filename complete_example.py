@@ -16,7 +16,7 @@ def lesson_01_basic_chat():
     print("LESSON 01: Basic LLM Chat")
     print("="*50)
     
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     response = agent.simple_generate("Explain what an AI agent is?")
     print(f"Response: {response}")
 
@@ -27,7 +27,7 @@ def lesson_02_with_role():
     print("LESSON 02: With System Prompt")
     print("="*50)
     
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     response = agent.generate_with_role("Explain what an AI agent is?")
     print(f"Response: {response}")
 
@@ -38,7 +38,7 @@ def lesson_03_structured():
     print("LESSON 03: Structured Output")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     schema = """{
   "topic": string,
@@ -58,7 +58,7 @@ def lesson_04_decisions():
     print("LESSON 04: Decision Making")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     decision = agent.decide(
         "Can you summarize this article for me?",
@@ -73,7 +73,7 @@ def lesson_05_tools():
     print("LESSON 05: Tool Calling")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     tool_call = agent.request_tool("What is 42 * 7?")
     print(f"Tool request: {tool_call}")
@@ -89,7 +89,7 @@ def lesson_06_agent_loop():
     print("LESSON 06: Agent Loop")
     print("="*50)
     
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     
     print("\nNote: Repetition in early iterations is expected.")
     print("The agent refines its understanding step by step and may repeat analysis")
@@ -113,7 +113,7 @@ def lesson_07_memory():
     print("LESSON 07: Memory")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     # First interaction - store name
     response1 = agent.run_with_memory("My name is Alice")
@@ -142,7 +142,7 @@ def lesson_08_planning():
     print("LESSON 08: Planning")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     plan = agent.create_plan("Write a blog post about AI agents")
     print(f"Plan: {plan}")
@@ -158,7 +158,7 @@ def lesson_09_atomic_actions():
     print("LESSON 09: Atomic Actions")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
 
     # Convert a plan step into an atomic action
     step = "Write an explanation of AI agents"
@@ -181,7 +181,7 @@ def lesson_10_aot():
     print("LESSON 10: Atom of Thought")
     print("="*50)
 
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     
     graph = agent.create_aot_plan("Research and write article")
     print(f"AoT graph: {graph}")
@@ -205,7 +205,7 @@ def lesson_11_evals():
         MEMORY_GOLDEN
     )
     
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     evaluator = AgentEval(agent)
     
     print("\nRunning eval suites...")
@@ -237,7 +237,7 @@ def lesson_12_telemetry():
     
     from agent.telemetry import Telemetry
     
-    agent = Agent("models/llama-3-8b-instruct.gguf")
+    agent = Agent()
     telemetry = Telemetry(log_file="agent_telemetry.jsonl")
     
     # Clear previous telemetry for clean demo
@@ -344,14 +344,12 @@ def main():
         print("All examples completed!")
         print("="*50)
         
-    except FileNotFoundError as e:
-        print(f"\n❌ Error: {e}")
-        print("\nMake sure you have:")
-        print("1. Downloaded a GGUF model")
-        print("2. Placed it in the models/ directory")
-        print("3. Updated the model path in this script")
     except Exception as e:
         print(f"\n❌ Unexpected error: {e}")
+        print("\nMake sure you have:")
+        print("1. Installed dependencies: pip install -r requirements.txt")
+        print("2. Set DEEPSEEK_API_KEY in your environment")
+        print("   (get a key at https://platform.deepseek.com/)")
 
 
 if __name__ == "__main__":

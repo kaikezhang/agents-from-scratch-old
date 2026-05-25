@@ -23,48 +23,41 @@ def check_python_version():
 def check_dependencies():
     """Check if required packages are installed"""
     try:
-        import llama_cpp
-        print("✅ llama-cpp-python installed")
+        import openai  # noqa: F401
+        print("✅ openai installed")
         return True
     except ImportError:
-        print("❌ llama-cpp-python not found")
-        print("   Install with: pip install llama-cpp-python")
+        print("❌ openai not found")
+        print("   Install with: pip install -r requirements.txt")
         return False
 
 
-def check_model_directory():
-    """Check if models directory exists"""
-    if os.path.isdir("models"):
-        print("✅ models/ directory exists")
-        
-        # Check for GGUF files
-        files = [f for f in os.listdir("models") if f.endswith(".gguf")]
-        if files:
-            print(f"✅ Found {len(files)} GGUF model(s):")
-            for f in files:
-                size_mb = os.path.getsize(f"models/{f}") / (1024**2)
-                print(f"   - {f} ({size_mb:.1f} MB)")
-        else:
-            print("⚠️  No GGUF models found in models/")
-            print("   Download a model and place it in models/")
+def check_api_key():
+    """Check that an API key is set in the environment."""
+    if os.environ.get("DEEPSEEK_API_KEY"):
+        print("✅ DEEPSEEK_API_KEY is set")
         return True
-    else:
-        print("❌ models/ directory not found")
-        return False
+    if os.environ.get("OPENAI_API_KEY"):
+        print("✅ OPENAI_API_KEY is set (will be used as fallback)")
+        return True
+    print("❌ No API key found in environment")
+    print("   Set DEEPSEEK_API_KEY (get one at https://platform.deepseek.com/)")
+    print("   Example: export DEEPSEEK_API_KEY=sk-...")
+    return False
 
 
 def check_structure():
     """Check repository structure"""
     required_dirs = ["shared", "agent", "lessons"]
     all_exist = True
-    
+
     for dir_name in required_dirs:
         if os.path.isdir(dir_name):
             print(f"✅ {dir_name}/ directory exists")
         else:
             print(f"❌ {dir_name}/ directory not found")
             all_exist = False
-    
+
     return all_exist
 
 
@@ -74,20 +67,20 @@ def main():
     print("AI Agents from Scratch - Setup Verification")
     print("="*50)
     print()
-    
+
     checks = [
         ("Python Version", check_python_version),
         ("Dependencies", check_dependencies),
-        ("Models Directory", check_model_directory),
+        ("API Key", check_api_key),
         ("Repository Structure", check_structure),
     ]
-    
+
     results = []
-    
+
     for name, check_func in checks:
         print(f"\n{name}:")
         results.append(check_func())
-    
+
     print("\n" + "="*50)
     if all(results):
         print("✅ All checks passed! You're ready to start learning.")

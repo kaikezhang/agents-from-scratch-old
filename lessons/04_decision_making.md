@@ -105,7 +105,7 @@ Look at `complete_example.py`, see `lesson_04_decisions()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 decision = agent.decide(
     "Can you summarize this article for me?",

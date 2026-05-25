@@ -5,10 +5,10 @@ Planning is data generation, not reasoning.
 Plans are inspectable, modifiable data structures.
 """
 
-from shared.llm import LocalLLM
+from shared.llm import LLM
 
 
-def create_plan(llm: LocalLLM, goal: str) -> dict | None:
+def create_plan(llm: LLM, goal: str) -> dict | None:
     """
     Generate a plan to achieve a goal.
     
@@ -47,7 +47,7 @@ Response (JSON only):"""
     return None
 
 
-def create_atomic_action(llm: LocalLLM, step: str) -> dict | None:
+def create_atomic_action(llm: LLM, step: str) -> dict | None:
     """
     Convert a plan step into an atomic action.
     
@@ -93,7 +93,7 @@ Response (JSON only):"""
     return None
 
 
-def create_aot_graph(llm: LocalLLM, goal: str) -> dict | None:
+def create_aot_graph(llm: LLM, goal: str) -> dict | None:
     """
     Generate an Atom of Thought (AoT) execution graph.
     

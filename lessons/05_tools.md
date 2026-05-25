@@ -115,7 +115,7 @@ Look at `complete_example.py`, see `lesson_05_tools()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 tool_call = agent.request_tool("What is 42 * 7?")
 print(f"Tool request: {tool_call}")

@@ -97,7 +97,7 @@ def execute_plan(self, plan: dict) -> list:
 And the planner implementation in `agent/planner.py`:
 
 ```python
-def create_plan(llm: LocalLLM, goal: str) -> dict | None:
+def create_plan(llm: LLM, goal: str) -> dict | None:
     """
     Generate a plan to achieve a goal.
     
@@ -149,7 +149,7 @@ Look at `complete_example.py`, see `lesson_08_planning()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 plan = agent.create_plan("Write a blog post about AI agents")
 print(f"Plan: {plan}")
