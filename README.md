@@ -1,6 +1,6 @@
 # AI Agents from Scratch
 
-A gentle, local-first introduction to AI agents.
+A gentle, hands-on introduction to AI agents — runs on the DeepSeek API (or any OpenAI-compatible endpoint).
 
 This repository teaches how AI agents actually work by building **one agent** step by step from a single local LLM call.
 
@@ -53,7 +53,7 @@ This repository builds one continuously evolving agent across 12 lessons:
 **This repo is for:**
 - Developers who can code but feel lost with agents
 - People tired of "just use LangChain"
-- Learners who want local models
+- Learners who want a cheap, reproducible setup (DeepSeek API or any OpenAI-compatible endpoint)
 - Engineers who want mechanical understanding
 - Educators looking for a clean mental model
 
@@ -69,7 +69,7 @@ This repository builds one continuously evolving agent across 12 lessons:
 
 In short:
 1. Install dependencies: `pip install -r requirements.txt`
-2. Download a GGUF model to the `models/` folder
+2. `cp .env.example .env` and add your DeepSeek API key
 3. Run: `python complete_example.py`
 
 **Note:** The `complete_example.py` file contains executable code examples demonstrating all 12 lessons. You can use it as a reference to see how all the concepts fit together.
@@ -84,7 +84,6 @@ ai-agents-from-scratch/
 ├─ complete_example.py    # Demonstrations of all 12 lessons
 ├─ requirements.txt       # Python dependencies
 │
-├─ models/                # Place GGUF models here
 ├─ shared/                # Reusable utilities (LLM, prompts, utils)
 ├─ agent/                 # The evolving agent implementation
 │  ├─ agent.py             # Main agent class 
@@ -130,14 +129,14 @@ ai-agents-from-scratch/
 - This is **not a chatbot demo**
 - This does **not claim models think**
 - This does **not expose chain-of-thought**
-- This does **not require OpenAI or cloud APIs**
+- This does **not lock you into a vendor** — the LLM wrapper talks to any OpenAI-compatible endpoint (DeepSeek by default, but OpenAI / Ollama / etc. work too)
 
 ## Core Principles
 
 1. **One agent, many stages** - The same `agent.py` file grows across lessons
 2. **Explicit over implicit** - No hidden logic, no magic abstractions
 3. **Structure over prompting** - Reliability comes from constraints, not clever wording
-4. **Local-first** - No API keys, no rate limits, no cloud dependency
+4. **Cheap and swappable** - DeepSeek API by default (pennies per full run); any OpenAI-compatible endpoint works via env vars
 5. **Educational, not production** - This teaches fundamentals, not best practices
 
 ## Learning Path

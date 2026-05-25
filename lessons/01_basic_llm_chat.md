@@ -62,7 +62,7 @@ Look at `complete_example.py`, see `lesson_01_basic_chat()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 response = agent.simple_generate("What is an AI agent?")
 print(response)

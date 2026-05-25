@@ -117,7 +117,7 @@ Look at `complete_example.py`, see `lesson_07_memory()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 # First interaction - store name
 response1 = agent.run_with_memory("My name is Alice")

@@ -92,7 +92,7 @@ Look at `complete_example.py`, see `lesson_02_with_role()` method:
 ```python
 from agent.agent import Agent
 
-agent = Agent("models/llama-3-8b-instruct.gguf")
+agent = Agent()
 
 # The agent has a default system prompt:
 # "You are a calm, precise, and helpful AI assistant..."
