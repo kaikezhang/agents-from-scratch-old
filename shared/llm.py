@@ -19,6 +19,15 @@ import os
 
 from openai import OpenAI
 
+# Load variables from a local .env file (if present) so users don't have to
+# `export` keys in every shell. Safe to call even when there is no .env.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
 
 DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-chat"

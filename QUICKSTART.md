@@ -23,28 +23,28 @@ pip install -r requirements.txt
 
 ## Step 2: Get a DeepSeek API Key
 
-1. Sign up at https://platform.deepseek.com/
-2. Create an API key in the dashboard
-3. Export it in your shell:
+1. Sign up at https://platform.deepseek.com/ and create an API key.
+2. Copy the example env file and paste your key in:
 
 ```bash
-export DEEPSEEK_API_KEY=sk-...
+cp .env.example .env
+# then edit .env and set DEEPSEEK_API_KEY=sk-...
 ```
 
-Add the line to your `~/.zshrc` / `~/.bashrc` if you want it to persist.
+`.env` is gitignored, so your key stays local. The repo loads it
+automatically — no need to `export` anything in your shell.
+
+> Prefer shell exports? They still work and take precedence over `.env`.
 
 ### Using a different OpenAI-compatible endpoint
 
-The `LLM` class also reads these env vars, so you can point it elsewhere
-without touching code:
+The same `.env` file can point the LLM wrapper at any OpenAI-compatible
+endpoint. See `.env.example` for ready-to-use blocks for **OpenAI** and
+**local Ollama**. The relevant variables:
 
 - `DEEPSEEK_BASE_URL` or `OPENAI_BASE_URL` — defaults to `https://api.deepseek.com`
-- `OPENAI_API_KEY` — used as a fallback if `DEEPSEEK_API_KEY` is not set
+- `OPENAI_API_KEY` — fallback if `DEEPSEEK_API_KEY` is not set
 - `LLM_MODEL` — defaults to `deepseek-chat`
-
-Examples:
-- Official OpenAI: `OPENAI_BASE_URL=https://api.openai.com/v1` + `OPENAI_API_KEY=...` + `LLM_MODEL=gpt-4o-mini`
-- Local Ollama: `OPENAI_BASE_URL=http://localhost:11434/v1` + `OPENAI_API_KEY=ollama` + `LLM_MODEL=llama3.1`
 
 ## Step 3: Verify Setup
 
@@ -79,8 +79,9 @@ Each lesson builds on the previous one.
 
 ### `RuntimeError: No API key found`
 
-You haven't set `DEEPSEEK_API_KEY`. Run `export DEEPSEEK_API_KEY=sk-...` in
-the same shell before launching the script.
+`DEEPSEEK_API_KEY` isn't set. Either:
+- create a `.env` (copy from `.env.example`) and put your key there, or
+- `export DEEPSEEK_API_KEY=sk-...` in the same shell before launching the script.
 
 ### `openai.AuthenticationError` / 401
 

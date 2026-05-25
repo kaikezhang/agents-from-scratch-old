@@ -69,7 +69,7 @@ This repository builds one continuously evolving agent across 12 lessons:
 
 In short:
 1. Install dependencies: `pip install -r requirements.txt`
-2. Set your DeepSeek API key: `export DEEPSEEK_API_KEY=sk-...`
+2. `cp .env.example .env` and add your DeepSeek API key
 3. Run: `python complete_example.py`
 
 **Note:** The `complete_example.py` file contains executable code examples demonstrating all 12 lessons. You can use it as a reference to see how all the concepts fit together.

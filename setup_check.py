@@ -8,6 +8,13 @@ Run this after installing dependencies to verify your setup is correct.
 import sys
 import os
 
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
 
 def check_python_version():
     """Check Python version is 3.10+"""
